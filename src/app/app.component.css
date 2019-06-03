@@ -1,0 +1,32 @@
+#menu-outer {
+    height: 84px;
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+ul#horizontal-list {
+	min-width: 696px;
+	list-style: none;
+  padding-top: 20px;
+  font-size: 25px;
+  color: red;
+	}
+	ul#horizontal-list li {
+        display: inline;
+        padding-right: 20px;
+        
+}
+a {
+  text-decoration: none !important;
+  color:#f20c7e;
+}
+a:hover {
+  color: red;
+  background-color: #d4d7dc;
+}
+a:active {
+  background-color: #d4d7dc;
+}
