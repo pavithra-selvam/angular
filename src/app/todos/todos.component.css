@@ -1,0 +1,27 @@
+
+#content {
+    background-color: #E5E7E9;
+    padding: 20px 20px;
+    margin: 100px;
+    border-radius: 20px;
+}
+h1 {    
+    margin: 40px 0;
+    padding: 0px 15%;
+    text-align: center;
+    width: 65%;
+}
+#todoadd, #todoshow {
+    text-align: center;
+}
+#todoshow ul {
+    width: 75%;
+}
+#todoshow ul li {
+    list-style: none;
+   
+}
+.remove {
+    color:red;
+    float: right 
+}

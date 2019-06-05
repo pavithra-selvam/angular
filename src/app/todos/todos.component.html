@@ -1,0 +1,20 @@
+<div id="content">
+  <h1>Todos</h1>
+  <div id="todoadd">
+    <p #validation *ngIf="show" style="color:red;">Make sure todo is not empty</p>
+    <input #newHero (keyup.enter)="addHero(newHero.value)">
+    <button (click)="addHero(newHero.value);newHero.value=''">+</button>    
+  </div>
+  <div id="todoshow">
+    <ul>
+      <li *ngFor="let hero of heroes;let index = index" id="{{hero}}">
+        <input #check type="checkbox" >        
+        <input #hidval *ngIf="edit" [(ngModel)]="hero" value="{{hero}}">
+        <button *ngIf="edit" name="{{hero}}" (click)="save();">save</button>
+        <span *ngIf="!edit" (click)="editfn()">{{hero}}</span>
+        <button class="remove" (click)="remove(index)">X</button>
+      </li>
+    </ul>
+  </div>  
+</div>
+
