@@ -15,7 +15,7 @@
         </tr>
         <tr *ngFor="let hero of heroes; index as i">
           <td>
-            <input type="checkbox" [disabled]="hero.marked" [(ngModel)]="hero.marked"  (click)="toggleVisibility($event,i)"/>
+            <input type="checkbox" [(ngModel)]="hero.marked"  (click)="toggleVisibility($event,i)"/>
           </td>        
          
           <td>
