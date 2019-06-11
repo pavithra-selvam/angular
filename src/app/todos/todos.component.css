@@ -1,6 +1,6 @@
 
 #content {
-    background-color: #E5E7E9;
+    background-color:#F5D9DD;
     padding: 20px 20px;
     margin: 100px;
     border-radius: 20px;
@@ -23,5 +23,18 @@ h1 {
 }
 .remove {
     color:red;
-    float: right 
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+/* tr:nth-child(even) {
+    background-color: white;
+} */

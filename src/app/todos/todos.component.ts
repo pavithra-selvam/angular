@@ -16,10 +16,16 @@ export class TodosComponent implements OnInit {
   hidval = '';
   show:boolean;
   edit:boolean = false;
-  addHero(newHero: string) {
+  marked:boolean = false;
+  addHero(newHero) {
     if (newHero) {
-      this.heroes.push(newHero);
-      this.show = false;
+      this.heroes.push({
+        id:this.heroes.length+1,
+        name: newHero,
+        edit: false,
+        marked: false
+      });  
+      this.show = false;   
     }
     else {
       this.show = true;
@@ -28,11 +34,16 @@ export class TodosComponent implements OnInit {
   remove(index){
     this.heroes.splice(index, 1);
   }
-  save(hidval: string) {     
-      this.edit = false;
+  save(obj1,obj2) {     
+      this.heroes[obj2].name = obj1;
+      this.heroes[obj2].edit = false; 
   }
-  editfn(){
-    this.edit = true;
+  editfn(i){  
+      this.heroes[i].edit = true;    
+  }
+  toggleVisibility(event,i){ 
+    this.heroes[i].marked= event.target.checked;  
+    this.heroes[i].marked = true;
   }
    
 }
