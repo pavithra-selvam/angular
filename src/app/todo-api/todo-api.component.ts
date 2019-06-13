@@ -19,6 +19,7 @@ export class TodoAPIComponent implements OnInit {
   username:string;
   createdDate = new Date();
   obj: any =[];
+  template:string;
   ngOnInit() { 
     this.spinnerService.show();   
     this.getTodos();
