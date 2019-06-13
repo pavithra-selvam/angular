@@ -1,0 +1,40 @@
+
+#content {
+    background-color:#F5D9DD;
+    padding: 20px 20px;
+    margin: 100px;
+    border-radius: 20px;
+}
+h1 {    
+    margin: 40px 0;
+    padding: 0px 15%;
+    text-align: center;
+    width: 65%;
+}
+#todoadd, #todoshow {
+    text-align: center;
+}
+#todoshow ul {
+    width: 75%;
+}
+#todoshow ul li {
+    list-style: none;
+   
+}
+.remove {
+    color:red;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+/* tr:nth-child(even) {
+    background-color: white;
+} */

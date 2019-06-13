@@ -1,0 +1,41 @@
+<div id="content">
+  <h1>Todos</h1>
+  <div id="todoadd">
+    <p #validation *ngIf="show" style="color:red;">Make sure todo is not empty</p>
+    <input #newHero (keyup.enter)="addHero(newHero.value)">
+    <button (click)="addHero(newHero.value);newHero.value=''">+</button>    
+  </div>
+  <div id="todoshow"> 
+      <ng4-loading-spinner  [template]="template" [loadingText]="'Please wait...'" [zIndex]="9999"></ng4-loading-spinner>   
+    <table>
+      <tr>
+        <th>###</th>
+        <th>Todo</th>
+        <th>Todo Status</th>
+        <th>Action</th>
+      </tr>
+     
+      <tr *ngFor="let hero of heroes; index as i">
+        <td>
+          <input type="checkbox"  [(ngModel)]="hero.completed"(click)="toggleVisibility(hero._id,$event)"/>
+        </td>        
+       
+        <td>
+          <span *ngIf="!hero.edit" (click)="editfn(hero._id,i)">{{hero.title}} by {{hero.username}} </span>      
+          <input  *ngIf="hero.edit" [disabled]="hero.completed" [(ngModel)]="hero.title">
+           <button  *ngIf="hero.edit" [disabled]="hero.completed" (click)="save(hero.title,hero._id);">save</button>
+        </td>
+        <td>
+          <span *ngIf="hero.completed">Completed</span><span *ngIf="!hero.completed">Incompleted</span>
+        </td>
+        <td>
+          <button class="remove" (click)="remove(hero._id)">X</button>
+        </td>
+      </tr> 
+    </table>
+  </div>  
+</div>
+
+
+
+ 
