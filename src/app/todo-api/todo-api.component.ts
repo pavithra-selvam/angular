@@ -99,7 +99,7 @@ export class TodoAPIComponent implements OnInit {
     }; 
     this.editTodos(this.obj);
   }
-  editTodos(arg){
+  editTodos(arg){ 
     this._freeApiService.editTodo(arg)
     .subscribe(
       data=> 
