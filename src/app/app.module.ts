@@ -12,6 +12,7 @@ import { TodosComponent } from './todos/todos.component';
 import { freeApiService } from './services/freeapi.service';
 import { TodoAPIComponent } from './todo-api/todo-api.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     AboutComponent,
     HomeComponent,
     TodosComponent,
-    TodoAPIComponent
+    TodoAPIComponent,
+    StopwatchComponent
   ],
   imports: [
     BrowserModule,
