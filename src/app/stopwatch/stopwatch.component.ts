@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import * as moment from 'moment';
 @Component({
   selector: 'app-stopwatch',
   templateUrl: './stopwatch.component.html',
@@ -8,11 +9,13 @@ import { interval, Subscription } from 'rxjs';
 export class StopwatchComponent implements OnDestroy {
 
   timer: number=0;
-  timerRef:Subscription = null;
+  timerRef;
   running: boolean = false;
   resetBt: boolean = false;
   colorBt: boolean = false;
   startText = 'Start';
+  minutes: number=0;
+  seconds: number=0;
   constructor() { }
 
   
@@ -21,39 +24,49 @@ export class StopwatchComponent implements OnDestroy {
     this.resetBt = false;
     if (this.running) {
       this.colorBt = true;
-      this.startText = 'Stop';
-      const secondsCounter = interval(1);
-      this.timerRef =  
-        secondsCounter.subscribe(() =>
-          this.timer = this.timer+1); 
+      this.startText = 'Stop';      
+      this.timerRef =   setInterval(() => {
+        this.timer = this.timer+1
+        if(this.timer === 100) {
+          this.timer = 0;
+          this.seconds += 1;
+        }
+        if(this.seconds === 60) {
+          this.seconds = 0;
+          this.minutes +=1;
+        }
+      },10);
+      
      
     } else {
       this.startText = 'Start';
       this.resetBt = true;
       this.colorBt = true;
-      this.timerRef.unsubscribe();
+      clearInterval(this.timerRef);
     }
     
     
   }
   format():string {
-    const minutes = Math.floor(this.timer / (1000 * 60));
-    const seconds = Math.floor((this.timer - minutes * 1000 * 60) / 1000);
-    const fract = Math.floor((this.timer - minutes * 1000 * 60 - seconds * 1000) / 10);
-
-    return minutes + 'm ' + (seconds < 10 ? '0' : '') + seconds + 's ' + (fract < 10 ? '0' : '') + fract + 'ms';
-}
+     return moment().hour(0).minute(0).second(this.timer).format('ss');
+  }
+  format1():string {
+    return moment().hour(0).minute(this.seconds).second(0).format('mm');
+  }
+  format2():string {
+    return moment().hour(this.minutes).minute(0).second(0).format('HH');
+  }
 clearTimer() {
   this.running = false;
   this.startText = 'Start';
   this.resetBt = false;
   this.colorBt = false;
-  this.timer = 0;
-  this.timerRef.unsubscribe();
+  this.timer = this.seconds = this.minutes = 0;
+  clearInterval(this.timerRef);
   
 }
 ngOnDestroy() {
-  this.timerRef.unsubscribe();
+  clearInterval(this.timerRef);
 }
 
 }
