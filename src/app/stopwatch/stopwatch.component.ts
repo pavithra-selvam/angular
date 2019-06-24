@@ -22,13 +22,13 @@ export class StopwatchComponent implements OnDestroy {
     if (this.running) {
       this.colorBt = true;
       this.startText = 'Stop';
-      const secondsCounter = interval(10);
+      const secondsCounter = interval(1);
       this.timerRef =  
         secondsCounter.subscribe(() =>
           this.timer = this.timer+1); 
      
     } else {
-      this.startText = 'Pause';
+      this.startText = 'Start';
       this.resetBt = true;
       this.colorBt = true;
       this.timerRef.unsubscribe();
@@ -41,7 +41,7 @@ export class StopwatchComponent implements OnDestroy {
     const seconds = Math.floor((this.timer - minutes * 1000 * 60) / 1000);
     const fract = Math.floor((this.timer - minutes * 1000 * 60 - seconds * 1000) / 10);
 
-    return minutes + 'm ' + (seconds < 10 ? '0' : '') + seconds + 's ' + (fract < 10 ? '0' : '') + fract;
+    return minutes + 'm ' + (seconds < 10 ? '0' : '') + seconds + 's ' + (fract < 10 ? '0' : '') + fract + 'ms';
 }
 clearTimer() {
   this.running = false;
