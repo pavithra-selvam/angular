@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "cypress open",
+    "cypressRecord": "cypress run --record --key 52a4ce59-c885-4ea4-b20b-54120afbccd8",
     "postinstall": "ng build --aot --prod"
   },
   "private": true,
